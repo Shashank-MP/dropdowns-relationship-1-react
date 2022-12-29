@@ -22,6 +22,7 @@ const AnotherGridLayout = () => (
         min-height: 6em;
         margin-left: 10%;
       }
+
     }
     `}
     </style>
@@ -39,8 +40,11 @@ const AnotherGridLayout = () => (
 
 
 
-<Header as='h2'  textAlign='left'>
+<Header as='h2'  textAlign='center'>
 Test Cases
+</Header>
+<Header as='h6'  textAlign='left'>
+PROJECTS
 </Header>
 <Grid columns='equal'>
 <Grid.Row columns='equal'>
@@ -49,22 +53,11 @@ Test Cases
       <Example1 />
     </p>
   </Grid.Column>
-  <Grid.Column>
-    <p>
-    <Example1 />
-    </p>
-  </Grid.Column>
-  <Grid.Column>
-    <p>
-    <Example1 />
-    </p>
-  </Grid.Column>
+  
+  
 </Grid.Row>
 
 </Grid>
-
-
-
 
   </Container>
 )

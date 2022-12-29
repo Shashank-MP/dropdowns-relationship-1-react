@@ -1,57 +1,87 @@
-import React, { Component } from 'react'
-import { Dropdown} from 'semantic-ui-react'
-
-const languageOptions = [
-  { key: 'Arabic', text: 'Arabic', value: 'Arabic' },
-  { key: 'Chinese', text: 'Chinese', value: 'Chinese' },
-  { key: 'Danish', text: 'Danish', value: 'Danish' },
-  { key: 'Dutch', text: 'Dutch', value: 'Dutch' },
-  { key: 'English', text: 'English', value: 'English' },
-  { key: 'French', text: 'French', value: 'French' },
-  { key: 'German', text: 'German', value: 'German' },
-  { key: 'Greek', text: 'Greek', value: 'Greek' },
-  { key: 'Hungarian', text: 'Hungarian', value: 'Hungarian' },
-  { key: 'Italian', text: 'Italian', value: 'Italian' },
-  { key: 'Japanese', text: 'Japanese', value: 'Japanese' },
-  { key: 'Korean', text: 'Korean', value: 'Korean' },
-  { key: 'Lithuanian', text: 'Lithuanian', value: 'Lithuanian' },
-  { key: 'Persian', text: 'Persian', value: 'Persian' },
-  { key: 'Polish', text: 'Polish', value: 'Polish' },
-  { key: 'Portuguese', text: 'Portuguese', value: 'Portuguese' },
-  { key: 'Russian', text: 'Russian', value: 'Russian' },
-  { key: 'Spanish', text: 'Spanish', value: 'Spanish' },
-  { key: 'Swedish', text: 'Swedish', value: 'Swedish' },
-  { key: 'Turkish', text: 'Turkish', value: 'Turkish' },
-  { key: 'Vietnamese', text: 'Vietnamese', value: 'Vietnamese' },
-]
+import * as React from "react";
+import { Container, Divider, Grid, Header, Icon } from 'semantic-ui-react'
 
 
+const App = () => {
+/** "selected" here is state variable which will hold the
+* value of currently selected dropdown.
+*/
+const [selected, setSelected] = React.useState("");
+// console.log([selected, setSelected])
+/** Function that will set different values to state variable
+* based on which dropdown is selected
+*/
+const changeSelectOptionHandler = (event) => {
+	setSelected(event.target.value);
+};
 
+/** Different arrays for different dropdowns */
+const C_PROGRAM = [
+	"MODULE 1 C_PROGRAM",
+	"MODULE 2 C_PROGRAM",
+	"MODULE 3 C_PROGRAM",
+];
+const PYTHON = ["MODULE 1 PYTHON",
+ "MODULE 2 PYTHON", "MODULE 3 PUTHON","MODULE 4 PYTHON"];
+const JAVA = ["MODULE 1 JAVA", "MODULE 2 JAVA", "MODULE 3 JAVA", "MODULE 4 JAVA"];
 
+/** Type variable to store different array for different dropdown */
+let type = null;
 
+/** This will be used to create set of options that user will see */
+let options = null;
 
-export default class trial1 extends Component {
-  state = {}
-
-  handleChange = (e, { value }) => this.setState({ value })
-
-  render() {
-    const { value } = this.state
-
-    return (
-      
-        <Dropdown
-            button
-            className='icon'
-            floating
-            labeled
-            icon='file code outline'
-            options={languageOptions}
-            search
-            //text={value}
-            placeholder='Choose an option'
-        />
-        
-    )
-  }
+/** Setting Type variable according to dropdown */
+if (selected === "C PROGRAM") {
+	type = C_PROGRAM;
+} else if (selected === "PYTHON") {
+	type = PYTHON;
+} else if (selected === "JAVA") {
+	type = JAVA;
 }
+
+/** If "Type" is null or undefined then options will be null,
+* otherwise it will create a options iterable based on our array
+*/
+if (type) {
+	options = type.map((el) => <option key={el}>{el}</option>);
+}
+return (
+	<div
+	style={{
+		padding: "16px",
+		margin: "16px",
+	}}
+	>
+	<form>
+		<div>
+		{/** Bind changeSelectOptionHandler to onChange method of select.
+		* This method will trigger every time different
+		* option is selected.
+		*/}
+  
+		<select onChange={changeSelectOptionHandler}>
+			<option>Projects...</option>
+			<option>C PROGRAM</option>
+			<option>PYTHON</option>
+			<option>JAVA</option>
+		</select>
+		</div>
+    <Header as='h6'  textAlign='left'>
+    MODULE
+    </Header>
+		<div>
+		<select>
+			{
+        
+			/** This is where we have used our options variable */
+			options
+			}
+		</select>
+		</div>
+	</form>
+	</div>
+);
+};
+
+export default App;
