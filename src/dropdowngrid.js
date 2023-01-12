@@ -1,9 +1,9 @@
 import React from 'react'
-import { Container, Divider, Grid, Header, Icon } from 'semantic-ui-react'
+import { Container, Divider, Grid, GridRow, Header, Icon } from 'semantic-ui-react'
 
 //import DropdownExampleSearchDropdown from './component/dropdown.js';
 import Example1 from "./component/dropdown";
-
+import Appp from "./component/excel_reader"
 // Ported from the amazing codepen by Alexei Popkov.
 // https://codepen.io/Reystleen/pen/oydqxz
 
@@ -56,6 +56,9 @@ PROJECTS
   
   
 </Grid.Row>
+<GridRow>
+  <Appp />
+</GridRow>
 
 </Grid>
 

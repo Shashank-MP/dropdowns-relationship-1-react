@@ -12,7 +12,6 @@ root.render(
   <div>
   <TopBar></TopBar>
   <AnotherGridLayout></AnotherGridLayout>
-  {/* <Example></Example> */}
   </div>
    
 );
